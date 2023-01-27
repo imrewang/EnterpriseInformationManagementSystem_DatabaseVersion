@@ -10,18 +10,18 @@
 using namespace std;
 
 
-void ServiceImpl::menu(void)//œ‘ æ‘À”™π‹¿Ì◊”≤Àµ•
+void ServiceImpl::menu(void)//ÊòæÁ§∫ËøêËê•ÁÆ°ÁêÜÂ≠êËèúÂçï
 {
-	cout << "****∆Û“µ–≈œ¢π‹¿ÌœµÕ≥****" << endl;
-	cout << "    1.‘ˆº”≤ø√≈" << endl;
-	cout << "    2.…æ≥˝≤ø√≈" << endl;
-	cout << "    3.¡–≥ˆ≤ø√≈" << endl;
-	cout << "    4.‘ˆº”‘±π§" << endl;
-	cout << "    5.…æ≥˝‘±π§" << endl;
-	cout << "    6.–ﬁ∏ƒ‘±π§–≈œ¢" << endl;
-	cout << "    7.¡–≥ˆ≤ø√≈‘±π§" << endl;
-	cout << "    8.¡–≥ˆÀ˘”–‘±π§" << endl;
-	cout << "    0.ÕÀ≥ˆ◊”œµÕ≥" << endl;
+	cout << "****‰ºÅ‰∏ö‰ø°ÊÅØÁÆ°ÁêÜÁ≥ªÁªü****" << endl;
+	cout << "    1.Â¢ûÂä†ÈÉ®Èó®" << endl;
+	cout << "    2.Âà†Èô§ÈÉ®Èó®" << endl;
+	cout << "    3.ÂàóÂá∫ÈÉ®Èó®" << endl;
+	cout << "    4.Â¢ûÂä†ÂëòÂ∑•" << endl;
+	cout << "    5.Âà†Èô§ÂëòÂ∑•" << endl;
+	cout << "    6.‰øÆÊîπÂëòÂ∑•‰ø°ÊÅØ" << endl;
+	cout << "    7.ÂàóÂá∫ÈÉ®Èó®ÂëòÂ∑•" << endl;
+	cout << "    8.ÂàóÂá∫ÊâÄÊúâÂëòÂ∑•" << endl;
+	cout << "    0.ÈÄÄÂá∫Â≠êÁ≥ªÁªü" << endl;
 	cout << "______________________" << endl;
 }
 
@@ -33,9 +33,9 @@ bool ServiceImpl::manager_login(void)
 {
 	
 
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 
-	cout << "«Î ‰»Î”√ªß√˚£∫";
+	cout << "ËØ∑ËæìÂÖ•Áî®Êà∑ÂêçÔºö";
 	string name;
 	cin >> name;
 
@@ -45,22 +45,22 @@ bool ServiceImpl::manager_login(void)
 
 	if (selname <= 0)
 	{
-		cout << "√ª”–≤È—ØµΩ’ ∫≈" << endl;
+		cout << "Ê≤°ÊúâÊü•ËØ¢Âà∞Â∏êÂè∑" << endl;
 		free(cmd);
 		return false;
 		
 	}
-	cout << "≥…π¶≤È—ØµΩ’ ∫≈" << endl;
+	cout << "ÊàêÂäüÊü•ËØ¢Âà∞Â∏êÂè∑" << endl;
 	while (1) {
 		sprintf_s(cmd, BUFFER_SIZE, "select name from Manager where name=\"%s\" and prem>=3", name.c_str());
 		int selprem = sql.select(cmd);
 		if (selprem > 0) {
-			cout << "’Àªß∂≥Ω·£¨«Î¡™œµ≥¨º∂π‹¿Ì‘±Ω‚∂≥" << endl;
+			cout << "Ë¥¶Êà∑ÂÜªÁªìÔºåËØ∑ËÅîÁ≥ªË∂ÖÁ∫ßÁÆ°ÁêÜÂëòËß£ÂÜª" << endl;
 			free(cmd);
 			return false;
 		}
 
-		cout << "«Î ‰»Î√‹¬Î£∫";
+		cout << "ËØ∑ËæìÂÖ•ÂØÜÁ†ÅÔºö";
 		string password;
 		cin >> password;
 		
@@ -71,32 +71,32 @@ bool ServiceImpl::manager_login(void)
 
 		if (selpw > 0)
 		{
-			cout << "≥…π¶µ«¬º" << endl;
+			cout << "ÊàêÂäüÁôªÂΩï" << endl;
 			free(cmd);
 			return true;
 		}
 		else {
 			sprintf_s(cmd, BUFFER_SIZE, "UPDATE Manager SET prem=prem+1 where name=\"%s\"", name.c_str());
 			int upd = sql.update(cmd);
-			cout << "«Î÷ÿ–¬ ‰»Î√‹¬Î" << endl;
+			cout << "ËØ∑ÈáçÊñ∞ËæìÂÖ•ÂØÜÁ†Å" << endl;
 		}
 	}
-	cout << " ß∞‹" << endl;
+	cout << "Â§±Ë¥•" << endl;
 	free(cmd);
 	return false;
 }
 
 
-void ServiceImpl::addDept(void)//‘ˆº”≤ø√≈≤Àµ•œÓ
+void ServiceImpl::addDept(void)//Â¢ûÂä†ÈÉ®Èó®ËèúÂçïÈ°π
 {
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024*sizeof(char));
-	cout << "«Î ‰»Î≤ø√≈√˚£∫";
+	cout << "ËØ∑ËæìÂÖ•ÈÉ®Èó®ÂêçÔºö";
 	
 	string name;
 	cin >> name;
 
-	cout << "«Î ‰»Î≤ø√≈id£∫";
+	cout << "ËØ∑ËæìÂÖ•ÈÉ®Èó®idÔºö";
 	int did;
 	cin >> did;
 	
@@ -107,23 +107,23 @@ void ServiceImpl::addDept(void)//‘ˆº”≤ø√≈≤Àµ•œÓ
 
 	if (0 == ins || ins == -1)
 	{
-		cout << "‘ˆº” ß∞‹£¨«Î≤Èø¥ ˝æ› «∑Ò÷ÿ∏¥" << endl;
+		cout << "Â¢ûÂä†Â§±Ë¥•ÔºåËØ∑Êü•ÁúãÊï∞ÊçÆÊòØÂê¶ÈáçÂ§ç" << endl;
 		_getch();
 		_getch();
 		free(cmd);
 		return;
 	}
-	cout << "≤ø√≈ÃÌº”≥…π¶" << endl;
+	cout << "ÈÉ®Èó®Ê∑ªÂä†ÊàêÂäü" << endl;
 	_getch();
 	_getch();
 	free(cmd);
 }
-void ServiceImpl::deleteDept(void)//…æ≥˝≤ø√≈≤Àµ•œÓ
+void ServiceImpl::deleteDept(void)//Âà†Èô§ÈÉ®Èó®ËèúÂçïÈ°π
 {
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 
-	cout << "«Î ‰»Î“™…æ≥˝µƒ≤ø√≈id£∫";
+	cout << "ËØ∑ËæìÂÖ•Ë¶ÅÂà†Èô§ÁöÑÈÉ®Èó®idÔºö";
 	int did;
 	cin >> did;
 
@@ -131,7 +131,7 @@ void ServiceImpl::deleteDept(void)//…æ≥˝≤ø√≈≤Àµ•œÓ
 	int del = sql.remove(cmd);
 	if (0 >= del)
 	{
-		cout << "…æ≥˝ ß∞‹£¨«Î≤Èø¥id «∑Ò’˝»∑" << endl;
+		cout << "Âà†Èô§Â§±Ë¥•ÔºåËØ∑Êü•ÁúãidÊòØÂê¶Ê≠£Á°Æ" << endl;
 		_getch();
 		_getch();
 		free(cmd);
@@ -142,43 +142,43 @@ void ServiceImpl::deleteDept(void)//…æ≥˝≤ø√≈≤Àµ•œÓ
 	int del2 = sql.remove(cmd);
 	if (del2 > 0)
 	{
-		cout << "∏√≤ø√≈‘±π§…æ≥˝≥…π¶" << endl;
+		cout << "ËØ•ÈÉ®Èó®ÂëòÂ∑•Âà†Èô§ÊàêÂäü" << endl;
 	}
 	else
-		cout << "∏√≤ø√≈Œﬁ‘±π§" << endl;
+		cout << "ËØ•ÈÉ®Èó®Êó†ÂëòÂ∑•" << endl;
 
-	cout << "≤ø√≈…æ≥˝≥…π¶" << endl;
+	cout << "ÈÉ®Èó®Âà†Èô§ÊàêÂäü" << endl;
 	_getch();
 	_getch();
 	free(cmd);
 }
-void ServiceImpl::listDept(void)//¡–≥ˆ≤ø√≈≤Àµ•œÓ
+void ServiceImpl::listDept(void)//ÂàóÂá∫ÈÉ®Èó®ËèúÂçïÈ°π
 {
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 	sprintf_s(cmd, BUFFER_SIZE, "select did,name,num from Department");
 	int sel = sql.select(cmd);
 
-	cout << "      ≤ø√≈id   ";
-	cout << "      ≤ø√≈√˚   ";
-	cout << "    ≤ø√≈»À ˝" << endl;
+	cout << "      ÈÉ®Èó®id   ";
+	cout << "      ÈÉ®Èó®Âêç   ";
+	cout << "    ÈÉ®Èó®‰∫∫Êï∞" << endl;
 	sql.showResult();
 
 	if (sel > 0)
 	{
-		cout << " ‰≥ˆÕÍ±œ" << endl;
+		cout << "ËæìÂá∫ÂÆåÊØï" << endl;
 	}
 
 	_getch();
 	free(cmd);
 }
-void ServiceImpl::addEmp(void)//‘ˆº”‘±π§≤Àµ•œÓ
+void ServiceImpl::addEmp(void)//Â¢ûÂä†ÂëòÂ∑•ËèúÂçïÈ°π
 {
-	cout << "«Î ‰»Î≤ø√≈±‡∫≈£∫";
+	cout << "ËØ∑ËæìÂÖ•ÈÉ®Èó®ÁºñÂè∑Ôºö";
 	int d_id = 0;
 	cin >> d_id;
 
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 
 	sprintf_s(cmd, BUFFER_SIZE, "select did from Department where did=%d", d_id);
@@ -186,7 +186,7 @@ void ServiceImpl::addEmp(void)//‘ˆº”‘±π§≤Àµ•œÓ
 	if (sel <= 0)
 	{
 		cout << "sel:" << sel << endl;
-		cout << "∏√≤ø√≈≤ª¥Ê‘⁄" << endl;
+		cout << "ËØ•ÈÉ®Èó®‰∏çÂ≠òÂú®" << endl;
 		_getch();
 		free(cmd);
 		return;
@@ -195,11 +195,11 @@ void ServiceImpl::addEmp(void)//‘ˆº”‘±π§≤Àµ•œÓ
 	string name;
 	int gender = 0;
 	int age;
-	cout << "«Î ‰»Î‘±π§id£∫";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•idÔºö";
 	cin >> eid;
-	cout << "«Î ‰»Î‘±π§–’√˚£∫";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•ÂßìÂêçÔºö";
 	cin >> name;
-	cout << "«Î—°‘Ò‘±π§–‘±(0,±Ì æƒ–£¨1£¨±Ì æ≈Æ),";
+	cout << "ËØ∑ÈÄâÊã©ÂëòÂ∑•ÊÄßÂà´(0,Ë°®Á§∫Áî∑Ôºå1ÔºåË°®Á§∫Â•≥),";
 
 	switch (get_cmd('0', '1'))
 	{
@@ -207,7 +207,7 @@ void ServiceImpl::addEmp(void)//‘ˆº”‘±π§≤Àµ•œÓ
 	case '1': gender = 1; break;
 	}
 
-	cout << "«Î ‰»Î‘±π§ƒÍ¡‰£∫";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•Âπ¥ÈæÑÔºö";
 	cin >> age;
 	_getch();
 
@@ -216,7 +216,7 @@ void ServiceImpl::addEmp(void)//‘ˆº”‘±π§≤Àµ•œÓ
 	if (ins <= 0)
 	{
 		cout << "ins:" << ins << endl;
-		cout << " ˝æ›”–ŒÛ£¨≤Â»Î ß∞‹" << endl;
+		cout << "Êï∞ÊçÆÊúâËØØÔºåÊèíÂÖ•Â§±Ë¥•" << endl;
 		_getch();
 		free(cmd);
 		return;
@@ -224,28 +224,28 @@ void ServiceImpl::addEmp(void)//‘ˆº”‘±π§≤Àµ•œÓ
 
 	sprintf_s(cmd, BUFFER_SIZE, "select did from Employee where did=%d", d_id);
 	int count = sql.select(cmd);
-	cout << "œ÷≤ø√≈»À ˝:" << count << endl;
+	cout << "Áé∞ÈÉ®Èó®‰∫∫Êï∞:" << count << endl;
 	sprintf_s(cmd, BUFFER_SIZE, "UPDATE Department SET num=%d where did=%d", count, d_id);
 	int upd = sql.update(cmd);
 	if (upd > 0)
 	{
-		cout << "≤ø√≈ ˝æ›∏¸–¬ÕÍ±œ" << endl;
+		cout << "ÈÉ®Èó®Êï∞ÊçÆÊõ¥Êñ∞ÂÆåÊØï" << endl;
 	}
 
-	cout << "‘±π§ÃÌº”≥…π¶" << endl;
+	cout << "ÂëòÂ∑•Ê∑ªÂä†ÊàêÂäü" << endl;
 	_getch();
 	free(cmd);
 }
-void ServiceImpl::deleteEmp(void)//…æ≥˝‘±π§≤Àµ•œÓ
+void ServiceImpl::deleteEmp(void)//Âà†Èô§ÂëòÂ∑•ËèúÂçïÈ°π
 {
-	cout << "«Î ‰»Î‘±π§±‡∫≈:";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•ÁºñÂè∑:";
 	int id = -1, did = -1;
 	cin >> id;
-	cout << "«Î ‰»Î‘±π§µƒ≤ø√≈id:";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•ÁöÑÈÉ®Èó®id:";
 	cin >> did;
 	_getch();
 
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 
 	sprintf_s(cmd, BUFFER_SIZE, "select eid from Employee where eid=%d", id);
@@ -253,7 +253,7 @@ void ServiceImpl::deleteEmp(void)//…æ≥˝‘±π§≤Àµ•œÓ
 	if (sel <= 0)
 	{
 		cout << "sel:" << sel << endl;
-		cout << "∏√‘±π§≤ª¥Ê‘⁄,…æ≥˝ ß∞‹" << endl;
+		cout << "ËØ•ÂëòÂ∑•‰∏çÂ≠òÂú®,Âà†Èô§Â§±Ë¥•" << endl;
 		_getch();
 		return;
 	}
@@ -262,7 +262,7 @@ void ServiceImpl::deleteEmp(void)//…æ≥˝‘±π§≤Àµ•œÓ
 	if (sel2 <= 0)
 	{
 		cout << "sel2:" << sel2 << endl;
-		cout << "∏√≤ø√≈≤ª¥Ê‘⁄,…æ≥˝ ß∞‹" << endl;
+		cout << "ËØ•ÈÉ®Èó®‰∏çÂ≠òÂú®,Âà†Èô§Â§±Ë¥•" << endl;
 		_getch();
 		return;
 	}
@@ -272,34 +272,34 @@ void ServiceImpl::deleteEmp(void)//…æ≥˝‘±π§≤Àµ•œÓ
 	if (del <= 0)
 	{
 		cout << "del:" << del << endl;
-		cout << " ‰»Î ˝æ›”–ŒÛ,…æ≥˝ ß∞‹" << endl;
+		cout << "ËæìÂÖ•Êï∞ÊçÆÊúâËØØ,Âà†Èô§Â§±Ë¥•" << endl;
 		_getch();
 		return;
 	}
 
 	sprintf_s(cmd, BUFFER_SIZE, "select did from Employee where did=%d", did);
 	int count = sql.select(cmd);
-	cout << "œ÷≤ø√≈»À ˝:" << count << endl;
+	cout << "Áé∞ÈÉ®Èó®‰∫∫Êï∞:" << count << endl;
 	sprintf_s(cmd, BUFFER_SIZE, "UPDATE Department SET num=%d where did=%d", count, did);
 	int upd = sql.update(cmd);
 	if (upd > 0)
 	{
-		cout << "≤ø√≈ ˝æ›∏¸–¬ÕÍ±œ" << endl;
+		cout << "ÈÉ®Èó®Êï∞ÊçÆÊõ¥Êñ∞ÂÆåÊØï" << endl;
 	}
 
-	cout << "…æ≥˝‘±π§≥…π¶" << endl;
+	cout << "Âà†Èô§ÂëòÂ∑•ÊàêÂäü" << endl;
 	_getch();
 
 }
-void ServiceImpl::modifyEmp(void)//–ﬁ∏ƒ‘±π§–≈œ¢≤Àµ•œÓ
+void ServiceImpl::modifyEmp(void)//‰øÆÊîπÂëòÂ∑•‰ø°ÊÅØËèúÂçïÈ°π
 {
-	cout << "«Î ‰»Î‘±π§±‡∫≈:";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•ÁºñÂè∑:";
 	int id = -1, old_did = -1;
 	cin >> id;
-	cout << "«Î ‰»Î‘±π§µƒ≤ø√≈id:";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•ÁöÑÈÉ®Èó®id:";
 	cin >> old_did;
 
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 
 	sprintf_s (cmd, BUFFER_SIZE, "select eid from Employee where eid=%d", id);
@@ -307,7 +307,7 @@ void ServiceImpl::modifyEmp(void)//–ﬁ∏ƒ‘±π§–≈œ¢≤Àµ•œÓ
 	if (sel <= 0)
 	{
 		//cout << "selname:" << selname << endl;
-		cout << "∏√‘±π§≤ª¥Ê‘⁄,–ﬁ∏ƒ ß∞‹" << endl;
+		cout << "ËØ•ÂëòÂ∑•‰∏çÂ≠òÂú®,‰øÆÊîπÂ§±Ë¥•" << endl;
 		_getch();
 		return;
 	}
@@ -316,27 +316,27 @@ void ServiceImpl::modifyEmp(void)//–ﬁ∏ƒ‘±π§–≈œ¢≤Àµ•œÓ
 	if (sel2 <= 0)
 	{
 		//cout << "selpw:" << selpw << endl;
-		cout << "∏√≤ø√≈≤ª¥Ê‘⁄,–ﬁ∏ƒ ß∞‹" << endl;
+		cout << "ËØ•ÈÉ®Èó®‰∏çÂ≠òÂú®,‰øÆÊîπÂ§±Ë¥•" << endl;
 		_getch();
 		return;
 	}
 
 	string name;
-	cout << "«Î ‰»Î‘±π§µƒ–¬–’√˚£∫";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•ÁöÑÊñ∞ÂßìÂêçÔºö";
 	cin >> name;
 	int gender = 0;
-	cout << "«Î—°‘Ò‘±π§–‘±(0,±Ì æƒ–£¨1£¨±Ì æ≈Æ),";
+	cout << "ËØ∑ÈÄâÊã©ÂëòÂ∑•ÊÄßÂà´(0,Ë°®Á§∫Áî∑Ôºå1ÔºåË°®Á§∫Â•≥),";
 	switch (get_cmd('0', '1'))
 	{
 	case '0': gender = 0; break;
 	case '1': gender = 1; break;
 	}
 
-	cout << "«Î ‰»Î‘±π§µƒ–¬ƒÍ¡‰£∫";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•ÁöÑÊñ∞Âπ¥ÈæÑÔºö";
 	int age = 0;
 	cin >> age;
 
-	cout << "«Î ‰»Î‘±π§µƒ–¬≤ø√≈id£∫";
+	cout << "ËØ∑ËæìÂÖ•ÂëòÂ∑•ÁöÑÊñ∞ÈÉ®Èó®idÔºö";
 	int did = 0;
 	cin >> did;
 
@@ -347,59 +347,59 @@ void ServiceImpl::modifyEmp(void)//–ﬁ∏ƒ‘±π§–≈œ¢≤Àµ•œÓ
 	if (upd <= 0)
 	{
 		cout << "upd:" << upd << endl;
-		cout << " ‰»Î ˝æ›”–ŒÛ£¨–ﬁ∏ƒ ß∞‹" << endl;
+		cout << "ËæìÂÖ•Êï∞ÊçÆÊúâËØØÔºå‰øÆÊîπÂ§±Ë¥•" << endl;
 		_getch();
 		return;
 	}
 
 	sprintf_s(cmd, BUFFER_SIZE, "select did from Employee where did=%d", did);
 	int count = sql.select(cmd);
-	cout << "œ÷≤ø√≈»À ˝:" << count << endl;
+	cout << "Áé∞ÈÉ®Èó®‰∫∫Êï∞:" << count << endl;
 	sprintf_s(cmd, BUFFER_SIZE, "UPDATE Department SET num=%d where did=%d", count, did);
 	upd = sql.update(cmd);
 
 
-	cout << "–ﬁ∏ƒ≥…π¶" << endl;
+	cout << "‰øÆÊîπÊàêÂäü" << endl;
 	_getch();
 }
-void ServiceImpl::listEmp(void)//¡–≥ˆ≤ø√≈‘±π§≤Àµ•œÓ
+void ServiceImpl::listEmp(void)//ÂàóÂá∫ÈÉ®Èó®ÂëòÂ∑•ËèúÂçïÈ°π
 {
 	int c_id;
-	cout << "«Î ‰»Î≤ø√≈±‡∫≈:";
+	cout << "ËØ∑ËæìÂÖ•ÈÉ®Èó®ÁºñÂè∑:";
 	cin >> c_id;
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 	sprintf_s(cmd, BUFFER_SIZE, "select eid,name,gender,age,did from Employee where did=%d", c_id);
 	int sel = sql.select(cmd);
-	cout << "      ‘±π§id   ";
-	cout << "      ‘±π§√˚   ";
-	cout << "–‘±(0ƒ–1≈Æ)   ";
-	cout << "        ƒÍ¡‰   ";
-	cout << "      ≤ø√≈id" << endl;
+	cout << "      ÂëòÂ∑•id   ";
+	cout << "      ÂëòÂ∑•Âêç   ";
+	cout << "ÊÄßÂà´(0Áî∑1Â•≥)   ";
+	cout << "        Âπ¥ÈæÑ   ";
+	cout << "      ÈÉ®Èó®id" << endl;
 	sql.showResult();
 	if (sel > 0)
 	{
-		cout << " ‰≥ˆÕÍ±œ" << endl;
+		cout << "ËæìÂá∫ÂÆåÊØï" << endl;
 	}
 	cout << endl;
 	_getch();
 	_getch();
 }
-void ServiceImpl::listAllEmp(void)//¡–≥ˆÀ˘”–‘±π§≤Àµ•œÓ
+void ServiceImpl::listAllEmp(void)//ÂàóÂá∫ÊâÄÊúâÂëòÂ∑•ËèúÂçïÈ°π
 {
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 	sprintf_s(cmd, BUFFER_SIZE, "select eid,name,gender,age,did from Employee");
 	int sel = sql.select(cmd);
-	cout << "      ‘±π§id   ";
-	cout << "      ‘±π§√˚   ";
-	cout << "–‘±(0ƒ–1≈Æ)   ";
-	cout << "        ƒÍ¡‰   ";
-	cout << "      ≤ø√≈id" << endl;
+	cout << "      ÂëòÂ∑•id   ";
+	cout << "      ÂëòÂ∑•Âêç   ";
+	cout << "ÊÄßÂà´(0Áî∑1Â•≥)   ";
+	cout << "        Âπ¥ÈæÑ   ";
+	cout << "      ÈÉ®Èó®id" << endl;
 	sql.showResult();
 	if (sel > 0)
 	{
-		cout << " ‰≥ˆÕÍ±œ" << endl;
+		cout << "ËæìÂá∫ÂÆåÊØï" << endl;
 	}
 	cout << endl;
 	_getch();
