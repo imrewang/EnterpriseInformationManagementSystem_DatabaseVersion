@@ -8,16 +8,16 @@
 
 using namespace std;
 
-//³¬¼¶¹ÜÀíÔ±µÇÂ½
+//è¶…çº§ç®¡ç†å‘˜ç™»é™†
 bool ManagerServiceImpl::login(void)
 {
 	string a_name = "admin";
 	string a_password = "admin";
-	cout << "ÇëÊäÈëÓÃ»§Ãû£º";
+	cout << "è¯·è¾“å…¥ç”¨æˆ·åï¼š";
 	string name;
 	cin >> name;
 
-	cout << "ÇëÊäÈëÃÜÂë£º";
+	cout << "è¯·è¾“å…¥å¯†ç ï¼š";
 	string password;
 	cin>>password;
 	cout << endl;
@@ -26,44 +26,44 @@ bool ManagerServiceImpl::login(void)
 
 	if (name == a_name && password == a_password)
 	{
-		cout << "µÇÂ½³É¹¦" << endl;
+		cout << "ç™»é™†æˆåŠŸ" << endl;
 		_getch();
 		return true;
 	}
 	else
 	{
-		cout << "ÓÃ»§Ãû»òÃÜÂë´íÎó" << endl;
+		cout << "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯" << endl;
 		return false;
 	}
 }
 
 
-//Í¨¹ı¿ØÖÆÌ¨ÏÔÊ¾Ö÷²Ëµ¥
+//é€šè¿‡æ§åˆ¶å°æ˜¾ç¤ºä¸»èœå•
 void ManagerServiceImpl::menu(void)
 {
-	cout << "****ÆóÒµĞÅÏ¢¹ÜÀíÏµÍ³****" << endl;
-	cout << "    1.Ôö¼Ó¹ÜÀíÔ±" << endl;
-	cout << "    2.É¾³ı¹ÜÀíÔ±" << endl;
-	cout << "    3.½â¶³¹ÜÀíÔ±" << endl;
-	cout << "    4.ÁĞ³öËùÓĞ¹ÜÀíÔ±" << endl;
-	cout << "    0.ÍË³ö×ÓÏµÍ³" << endl;
+	cout << "****ä¼ä¸šä¿¡æ¯ç®¡ç†ç³»ç»Ÿ****" << endl;
+	cout << "    1.å¢åŠ ç®¡ç†å‘˜" << endl;
+	cout << "    2.åˆ é™¤ç®¡ç†å‘˜" << endl;
+	cout << "    3.è§£å†»ç®¡ç†å‘˜" << endl;
+	cout << "    4.åˆ—å‡ºæ‰€æœ‰ç®¡ç†å‘˜" << endl;
+	cout << "    0.é€€å‡ºå­ç³»ç»Ÿ" << endl;
 	cout << "______________________" << endl;
 }
 
 
-//Í¨¹ı¿ØÖÆÌ¨´¦ÀíÔö¼Ó¹ÜÀíÔ±²Ëµ¥Ïî
+//é€šè¿‡æ§åˆ¶å°å¤„ç†å¢åŠ ç®¡ç†å‘˜èœå•é¡¹
 void ManagerServiceImpl::add(void)
 {
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 
-	cout << "ÇëÊäÈë¹ÜÀíÔ±id£º";
+	cout << "è¯·è¾“å…¥ç®¡ç†å‘˜idï¼š";
 	int add_m_id;
 	cin >> add_m_id;
-	cout << "ÇëÊäÈë¹ÜÀíÔ±ÓÃ»§Ãû£º";
+	cout << "è¯·è¾“å…¥ç®¡ç†å‘˜ç”¨æˆ·åï¼š";
 	string add_n;
 	cin >> add_n;
-	cout << "ÇëÊäÈë¹ÜÀíÔ±ÃÜÂë£º";
+	cout << "è¯·è¾“å…¥ç®¡ç†å‘˜å¯†ç ï¼š";
 	string add_pw;
 	cin >> add_pw;
 
@@ -71,26 +71,26 @@ void ManagerServiceImpl::add(void)
 	int ins = sql.insert(cmd);
 	if (0 == ins || ins == -1)
 	{
-		cout << "Ôö¼ÓÊ§°Ü£¬Çë²é¿´Êı¾İÊÇ·ñÖØ¸´" << endl;
+		cout << "å¢åŠ å¤±è´¥ï¼Œè¯·æŸ¥çœ‹æ•°æ®æ˜¯å¦é‡å¤" << endl;
 		_getch();
 		_getch();
 		return;
 	}
 
 
-	cout << "¹ÜÀíÔ±Ìí¼Ó³É¹¦" << endl;
+	cout << "ç®¡ç†å‘˜æ·»åŠ æˆåŠŸ" << endl;
 	_getch();
 	_getch();
 }
 
 
-//Í¨¹ı¿ØÖÆÌ¨´¦ÀíÉ¾³ı¹ÜÀíÔ±²Ëµ¥Ïî
+//é€šè¿‡æ§åˆ¶å°å¤„ç†åˆ é™¤ç®¡ç†å‘˜èœå•é¡¹
 void ManagerServiceImpl::del(void)
 {
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 
-	cout << "ÇëÊäÈëÒªÉ¾³ıµÄ¹ÜÀíÔ±id£º";
+	cout << "è¯·è¾“å…¥è¦åˆ é™¤çš„ç®¡ç†å‘˜idï¼š";
 	int del_mid;
 	cin >> del_mid;
 
@@ -99,27 +99,27 @@ void ManagerServiceImpl::del(void)
 	int del = sql.remove(cmd);
 	if (0 == del || del == -1)
 	{
-		cout << "É¾³ıÊ§°Ü£¬Çë²é¿´idÊÇ·ñÕıÈ·" << endl;
+		cout << "åˆ é™¤å¤±è´¥ï¼Œè¯·æŸ¥çœ‹idæ˜¯å¦æ­£ç¡®" << endl;
 		_getch();
 		_getch();
 		return;
 	}
-	cout << "¹ÜÀíÔ±É¾³ı³É¹¦" << endl;
+	cout << "ç®¡ç†å‘˜åˆ é™¤æˆåŠŸ" << endl;
 
 	_getch();
 	_getch();
 }
 
 
-//Í¨¹ı¿ØÖÆÌ¨´¦Àí½â¶³¹ÜÀíÔ±²Ëµ¥Ïî
+//é€šè¿‡æ§åˆ¶å°å¤„ç†è§£å†»ç®¡ç†å‘˜èœå•é¡¹
 void ManagerServiceImpl::unf(void)
 {
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 	memset(cmd, 0, BUFFER_SIZE);
 
 	
-	cout << "ÇëÊäÈëÒª½â¶³µÄ¹ÜÀíÔ±id£º";
+	cout << "è¯·è¾“å…¥è¦è§£å†»çš„ç®¡ç†å‘˜idï¼š";
 	int unf_mid;
 	cin >> unf_mid;
 	if (cin.fail())
@@ -133,14 +133,14 @@ void ManagerServiceImpl::unf(void)
 	int sel = sql.select(cmd);
 
 	if (sel <= 0) {
-		cout << "½â¶³Ê§°Ü£¬Çë²é¿´idÊÇ·ñÕıÈ·" << endl;
+		cout << "è§£å†»å¤±è´¥ï¼Œè¯·æŸ¥çœ‹idæ˜¯å¦æ­£ç¡®" << endl;
 		_getch();
 		free(cmd);
 		return;
 	}
-	cout << "    ¹ÜÀíÔ±id   ";
-	cout << "¹ÜÀíÔ±ÓÃ»§Ãû   ";
-	cout << "    ¹ÜÀíÔ±Ëø" << endl;
+	cout << "    ç®¡ç†å‘˜id   ";
+	cout << "ç®¡ç†å‘˜ç”¨æˆ·å   ";
+	cout << "    ç®¡ç†å‘˜é”" << endl;
 	sql.showResult();
 
 	sprintf_s(cmd, BUFFER_SIZE, "UPDATE Manager SET prem=0 where mid=%d", unf_mid);
@@ -148,7 +148,7 @@ void ManagerServiceImpl::unf(void)
 	
 	if (upd > 0)
 	{
-		cout << "¹ÜÀíÔ±½â¶³³É¹¦" << endl;
+		cout << "ç®¡ç†å‘˜è§£å†»æˆåŠŸ" << endl;
 	}
 	
 	
@@ -157,20 +157,20 @@ void ManagerServiceImpl::unf(void)
 }
 
 
-//Í¨¹ı¿ØÖÆÌ¨´¦ÀíÁĞ³öËùÓĞ¹ÜÀíÔ±²Ëµ¥Ïî
+//é€šè¿‡æ§åˆ¶å°å¤„ç†åˆ—å‡ºæ‰€æœ‰ç®¡ç†å‘˜èœå•é¡¹
 void ManagerServiceImpl::list(void)
 {
-	SQL sql("127.0.0.1", "root", "123zxcvbnm", "EMIS", 3306);
+	SQL sql("127.0.0.1", "root", "root", "EMIS", 3306);
 	char* cmd = (char*)malloc(1024);
 	sprintf_s(cmd, BUFFER_SIZE, "select mid,name,prem from Manager");
 	int sel = sql.select(cmd);
-	cout << "    ¹ÜÀíÔ±id   ";
-	cout << "¹ÜÀíÔ±ÓÃ»§Ãû   ";
-	cout << "    ¹ÜÀíÔ±Ëø" << endl;
+	cout << "    ç®¡ç†å‘˜id   ";
+	cout << "ç®¡ç†å‘˜ç”¨æˆ·å   ";
+	cout << "    ç®¡ç†å‘˜é”" << endl;
 	sql.showResult();
 	if (sel > 0)
 	{
-		cout << "Êä³ö³É¹¦" << endl;
+		cout << "è¾“å‡ºæˆåŠŸ" << endl;
 	}
 
 	_getch();
