@@ -45,7 +45,7 @@ create table Department(did int,name varchar(40),num int);
 create table Manager(mid int,name varchar(40),password varchar(20),prem int);
 ~~~
 
-![数据库截图](https://github.com/imrewang/EnterpriseInformationManagementSystem_DatabaseVersion/blob/main/screenshot/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%88%AA%E5%9B%BE.png)
+![数据库截图](https://gitee.com/imrew/EnterpriseInformationManagementSystem_DatabaseVersion/commit/469a2594973256b542ec0a9ca9a82f9821a0c52d)
 
 ### （三）部署截图
 
