@@ -69,7 +69,7 @@ create table Manager(mid int,name varchar(40),password varchar(20),prem int);
 
 效果：减少了以后使用的麻烦
 
-## 六、改进
+## 五、改进
 
 ### （一）sql.h,sql.cpp
 
