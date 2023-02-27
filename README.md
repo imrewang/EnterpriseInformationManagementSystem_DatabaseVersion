@@ -51,11 +51,11 @@ create table Manager(mid int,name varchar(40),password varchar(20),prem int);
 
 ![部署截图](https://github.com/imrewang/EnterpriseInformationManagementSystem_DatabaseVersion/blob/main/screenshot/%E9%83%A8%E7%BD%B2%E6%88%AA%E5%9B%BE.png?raw=true)
 
-## 四、运行截图
+## 三、运行截图
 
 ![运行截图](https://github.com/imrewang/EnterpriseInformationManagementSystem_DatabaseVersion/blob/main/screenshot/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE.png?raw=true)
 
-## 五、总结
+## 四、总结
 
 ### （一）连接数据库问题
 
